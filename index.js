@@ -6,7 +6,7 @@ let verses = [
         "On this website, I want to show why,",
         "You are my world, my sun, my sky.",
         "It's only a couple of things I love about you,",
-        "There's so much more: I love all that you do.",
+        "There's so much more: I love all what you do.",
     ],
     [
         "Chapter 1: Character",
@@ -32,7 +32,7 @@ let verses = [
         "In the whole universe, you've got the best wit,",
         "Every activity, every hobby you take,",
         "You ace it like it's just a piece of cake.",
-        "My love, you're so so adaptable, ",
+        "My love, you're so so adaptable,",
         "I find it so incredibly admirable.",
     ],
     [
@@ -122,12 +122,12 @@ function showLine(i, ind=0) {
         return;
     }
     if (ind >= verses[pageId][i].length) {
-        setTimeout(() => showLine(i + 1), 200);
+        setTimeout(() => showLine(i + 1), 500);
         return;
     }
     typedLines[i - 1].textContent += verses[pageId][i][ind];
     if (verses[pageId][i][ind] == ',') {
-        setTimeout(() => showLine(i, ind + 1), 100);
+        setTimeout(() => showLine(i, ind + 1), 160);
     }
     else {
         setTimeout(() => showLine(i, ind + 1), 80);
@@ -192,7 +192,7 @@ function nextPage() {
     verse.classList.add("hidden");
     setTimeout(() => {
         showPage();
-    }, 1000);
+    }, 2000);
 }
 
 function previousPage() {
@@ -201,10 +201,12 @@ function previousPage() {
     pageId--;
     setTimeout(() => {
         showPage();
-    }, 1000);
+    }, 2000);
 }
 
-showPage();
+setTimeout(() => {
+    showPage();
+}, 1000);
 
 window.onresize = () => {
     const titlePosition = invisibleTitle.getBoundingClientRect();

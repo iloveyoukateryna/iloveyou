@@ -31,7 +31,7 @@ body {
   flex-direction: column;
 }
 .verse * {
-  transition: opacity 1s ease;
+  transition: opacity 2s ease;
 }
 .verse.hidden * {
   opacity: 0;
