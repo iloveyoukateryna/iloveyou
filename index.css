@@ -1,0 +1,113 @@
+:root {
+  --backgroud_colour: white;
+  --primary_colour: hsl(0, 0%, 20%);
+  --secondary_colour: hsl(5, 80%, 63%);
+  --highlight_colour: hsl(5, 60%, 59%);
+  --tertiary_colour: hsl(0, 0%, 100%);
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background-color: var(--backgroud_colour);
+  transition: background-color 2s ease;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Bookman Old Style";
+}
+
+.verse {
+  background: var(--tertiary_colour);
+  width: min(750px, 90%);
+  height: 60%;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.verse * {
+  transition: opacity 1s ease;
+}
+.verse.hidden * {
+  opacity: 0;
+}
+.verse__title {
+  font-size: 3rem;
+  width: 100%;
+  text-align: center;
+  color: var(--secondary_colour);
+  margin: 0;
+}
+.verse__title.transparent {
+  color: var(--tertiary_colour);
+}
+.verse__text {
+  font-size: 1.5rem;
+  width: 100%;
+  text-align: center;
+  color: var(--primary_colour);
+}
+.verse__text__line.hidden {
+  opacity: 0;
+}
+.verse__text__line.transparent {
+  color: var(--tertiary_colour);
+}
+.verse__buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  height: 12%;
+  width: 60%;
+}
+.verse__buttons__button {
+  border-radius: 5px;
+  font-size: 1.5rem;
+  border: 0;
+  background-color: var(--secondary_colour);
+  color: var(--tertiary_colour);
+  height: 100%;
+  width: 100%;
+}
+.verse__buttons__button:hover {
+  cursor: pointer;
+  background-color: var(--highlight_colour);
+}
+.verse__buttons__button.hidden {
+  display: none;
+}
+.verse__buttons__button.transparent {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 1000px) {
+  :root {
+    font-size: 14px;
+  }
+  .verse {
+    height: 50%;
+  }
+}
+@media (max-width: 750px) {
+  :root {
+    font-size: 12px;
+  }
+}
+@media (max-width: 650px) {
+  :root {
+    font-size: 10px;
+  }
+}
+@media (max-width: 500px) {
+  :root {
+    font-size: 9px;
+  }
+}
+
+/*# sourceMappingURL=index.css.map */
