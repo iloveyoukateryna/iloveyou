@@ -89,7 +89,11 @@ let pageId = 0;
 const root = document.querySelector(':root');
 const verse = document.getElementsByClassName("verse")[0];
 const title = document.getElementsByClassName("verse__title")[0];
+const typedTitle = document.getElementsByClassName("verse__title__typed")[0];
+const invisibleTitle = document.getElementsByClassName("verse__title__invisible")[0];
 const lines = document.getElementsByClassName("verse__text__line");
+const typedLines = document.getElementsByClassName("verse__text__line__typed");
+const invisibleLines = document.getElementsByClassName("verse__text__line__invisible");
 const nextButton = document.getElementsByClassName("verse__buttons__next")[0];
 const previousButton = document.getElementsByClassName("verse__buttons__previous")[0];
 
@@ -98,13 +102,7 @@ function showTitle(ind = 0) {
         setTimeout(() => showLine(1), 1000);
         return;
     }
-    if (ind == 0) {
-        title.textContent = verses[pageId][0][ind];
-        title.classList.remove("transparent");
-    }
-    else {
-        title.textContent += verses[pageId][0][ind];
-    }
+    typedTitle.textContent += verses[pageId][0][ind];
     if (verses[pageId][0][ind] == ':') {
         setTimeout(() => showTitle(ind + 1), 500);
     }
@@ -127,13 +125,7 @@ function showLine(i, ind=0) {
         setTimeout(() => showLine(i + 1), 200);
         return;
     }
-    if (ind == 0) {
-        lines[i - 1].textContent = verses[pageId][i][ind];
-        lines[i - 1].classList.remove("transparent");
-    }
-    else {
-        lines[i - 1].textContent += verses[pageId][i][ind];
-    }
+    typedLines[i - 1].textContent += verses[pageId][i][ind];
     if (verses[pageId][i][ind] == ',') {
         setTimeout(() => showLine(i, ind + 1), 100);
     }
@@ -169,11 +161,24 @@ function showPage() {
     root.style.setProperty("--secondary_colour", `hsl(${colours[pageId]}, 80%, 60%)`);
     root.style.setProperty("--highlight_colour", `hsl(${colours[pageId]}, 60%, 59%)`);
 
-    title.classList.add("transparent");
-    title.textContent = verses[pageId][0];
+    typedTitle.textContent = "";
+    invisibleTitle.textContent = verses[pageId][0];
     for (let i = 0; i < lines.length; i++) {
-        lines[i].classList.add("transparent");
-        lines[i].textContent = verses[pageId][i + 1];
+        invisibleLines[i].textContent = verses[pageId][i + 1];
+        typedLines[i].textContent = "";
+        
+    }
+
+    const titlePosition = invisibleTitle.getBoundingClientRect();
+    typedTitle.style.left = `${titlePosition.left + window.scrollX}px`;
+    typedTitle.style.top = `${titlePosition.top + window.scrollY}px`;
+    typedTitle.style.width = `${titlePosition.width}px`;
+
+    for (let i = 0; i < lines.length; i++) {
+        const linePosition = invisibleLines[i].getBoundingClientRect();
+        typedLines[i].style.left = `${linePosition.left + window.scrollX}px`;
+        typedLines[i].style.top = `${linePosition.top + window.scrollY}px`;
+        typedLines[i].style.width = `${linePosition.width}px`;
     }
 
     setTimeout(() => {
@@ -200,3 +205,17 @@ function previousPage() {
 }
 
 showPage();
+
+window.onresize = () => {
+    const titlePosition = invisibleTitle.getBoundingClientRect();
+    typedTitle.style.left = `${titlePosition.left + window.scrollX}px`;
+    typedTitle.style.top = `${titlePosition.top + window.scrollY}px`;
+    typedTitle.style.width = `${titlePosition.width}px`;
+
+    for (let i = 0; i < lines.length; i++) {
+        const linePosition = invisibleLines[i].getBoundingClientRect();
+        typedLines[i].style.left = `${linePosition.left + window.scrollX}px`;
+        typedLines[i].style.top = `${linePosition.top + window.scrollY}px`;
+        typedLines[i].style.width = `${linePosition.width}px`;
+    }
+};

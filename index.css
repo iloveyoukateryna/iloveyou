@@ -43,8 +43,14 @@ body {
   color: var(--secondary_colour);
   margin: 0;
 }
+.verse__title__invisible {
+  visibility: hidden;
+}
+.verse__title__typed {
+  position: absolute;
+}
 .verse__title.transparent {
-  color: var(--tertiary_colour);
+  visibility: hidden;
 }
 .verse__text {
   font-size: 1.5rem;
@@ -56,7 +62,13 @@ body {
   opacity: 0;
 }
 .verse__text__line.transparent {
-  color: var(--tertiary_colour);
+  visibility: hidden;
+}
+.verse__text__line__invisible {
+  visibility: hidden;
+}
+.verse__text__line__typed {
+  position: absolute;
 }
 .verse__buttons {
   display: flex;
