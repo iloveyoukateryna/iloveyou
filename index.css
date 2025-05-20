@@ -48,6 +48,7 @@ body {
 }
 .verse__title__typed {
   position: absolute;
+  text-align: left;
 }
 .verse__title.transparent {
   visibility: hidden;
@@ -69,6 +70,7 @@ body {
 }
 .verse__text__line__typed {
   position: absolute;
+  text-align: left;
 }
 .verse__buttons {
   display: flex;
