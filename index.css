@@ -45,6 +45,7 @@ body {
 }
 .verse__title__invisible {
   visibility: hidden;
+  opacity: 0;
 }
 .verse__title__typed {
   position: absolute;
@@ -64,6 +65,7 @@ body {
 }
 .verse__text__line.transparent {
   visibility: hidden;
+  opacity: 0;
 }
 .verse__text__line__invisible {
   visibility: hidden;
